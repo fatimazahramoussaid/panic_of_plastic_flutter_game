@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+  <base href="$FLUTTER_BASE_HREF">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="Panic Of Plastic, a multiplatform demo game developed from idea to launch in just 6 weeks. Built with Flutter and Flame.">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Dash Run">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Share image -->
+  <meta property="og:image:type" content="image/png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png" />
+
+  <title>Panic Of Plastic - A Platformer Demo Built in Flutter</title>
+  <link rel="manifest" href="manifest.json">
+  <script src="flutter.js" defer></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date()); 
+    gtag('config', 'UA-67589403-11');
+  </script>
+  <style type="text/css">
+    html {
+      height: 100%;
+    }
+
+    body.loading-mode {
+      min-height: 100%;
+      display: flex;
+      flex: 1;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      overflow: hidden;
+      margin: 0;
+      background-color: #346EEB;
+      background: url("background.svg") no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+
+    .loading-mode p {
+      font-family: "Google Sans Text";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 18px;
+      text-align: center;
+      letter-spacing: 0.25px;
+      color: #ffffff;
+    }
+
+    .loading-mode #progress-bar {
+      position: absolute;
+      bottom: 180px;
+      padding: 3px;
+      width: 400px;
+      background: rgba(255, 255, 255, 0.24);
+      border-radius: 100px;
+    }
+
+    .loading-mode #progress-indicator {
+      height: 24px;
+      width: 0%;
+      background: linear-gradient(90deg, #F9F8C4, #27F5DD);
+      border-radius: 100px;
+    }
+
+    #splash-copy {
+      position: absolute;
+      bottom: 204px;
+      font-size: 32px;
+    }
+
+    #splash-logo {
+      position: absolute;
+      top: 50px;
+      width: 620px;
+      height: 320px;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+    }
+
+  </style>
+  <script>
+    // The value below is injected by flutter build, do not touch.
+    var serviceWorkerVersion = null;
+  </script>
+</head>
+
+<body class="loading-mode">
+  <object id="splash-logo" type="text/html" data="logo.html"></object>
+  <p id="splash-copy">
+    Loading...
+  </p>
+  <div id="progress-bar">
+    <div id="progress-indicator"></div>
+  </div>
+  <script>
+      const progressBar = document.querySelector("#progress-bar");
+      const progressIndicator = document.querySelector("#progress-indicator");
+
+      function beginPreloading(manifestAssets) {
+        var assets = [
+          "flutter.js",
+          "main.dart.js",
+
+          ...manifestAssets,
+        ];
+        let totalAssets = assets.length + 1;
+        let loaded = 0;
+
+        const batchSize = 20;
+
+        async function reportProgress() {
+          loaded++;
+          const value = Math.floor((loaded / totalAssets) * 100) + "%";
+          progressIndicator.style.width = value;
+
+          if (assets.length == 0) {
+            dispatchAppLoad();
+          } else {
+            load(assets.shift());
+          }
+        }
+      }
+
+      window.addEventListener("load", async function (ev) {
+        const response = await fetch("assets/AssetManifest.json");
+        const manifest = await response.json();
+        const assets = Object.values(manifest)
+          .map((list) => list.map((url) => "assets/" + url))
+          .reduce((arr, curr) => [...arr, ...curr]);
+
+        beginPreloading(assets);
+
+        // Download main.dart.js
+        _flutter.loader.loadEntrypoint({
+          serviceWorker: {
+            serviceWorkerVersion: serviceWorkerVersion,
+          },
+          onEntrypointLoaded: function(engineInitializer) {
+            engineInitializer.initializeEngine().then(function(appRunner) {
+              appRunner.runApp();
+            });
+          }
+        });
+        
+      });
+      
+
+  </script>
+</body>
+
+</html>
