@@ -8,11 +8,11 @@
     "@gameIntroPagePlayButtonText": {
         "description": "Text shown in the Play button of the Game Info Page"
     },
-    "gameInstructionsPageAutoRunTitle": "Dash Auto-runs",
+    "gameInstructionsPageAutoRunTitle": "the Bot Auto-runs",
     "@gameInstructionsPageAutoRunTitle": {
         "description": "Text shown in the title of the auto run instruction of the Game Instructions Overlay"
     },
-    "gameInstructionsPageAutoRunDescription": "Welcome to Panic Of Plastic. In this game Dash runs automatically.",
+    "gameInstructionsPageAutoRunDescription": "Welcome to Panic Of Plastic. In this game Panic of plastic runs automatically.",
     "@gameInstructionsPageAutoRunDescription": {
         "description": "Text shown in the description of the auto run instruction of the Game Instructions Overlay"
     },
@@ -47,19 +47,19 @@
 
     "gameInstructionsPageCollectEggsAcornsTitle": "Collect plastic bags & bottles",
     "@gameInstructionsPageCollectEggsAcornsTitle": {
-        "description": "Text shown in the title of the collect eggs and acorns instruction of the Game Instructions Overlay"
+        "description": "Text shown in the title of the collect plastics bags & bottles  instruction of the Game Instructions Overlay"
     },
-    "gameInstructionsPageCollectEggsAcornsDescription": "Get points by collecting eggs and acorns in the stage.",
+    "gameInstructionsPageCollectEggsAcornsDescription": "Get points by collecting plastics bags & bottles  in the stage.",
     "@gameInstructionsPageCollectEggsAcornsDescription": {
-        "description": "Text shown in the description of the collect eggs and acorns instruction of the Game Instructions Overlay"
+        "description": "Text shown in the description of the collect plastics bags & bottles  instruction of the Game Instructions Overlay"
     },
     "gameInstructionsPagePowerfulWingsTitle": "Powerful Teleport : to move to the other side of the map",
     "@gameInstructionsPagePowerfulWingsTitle": {
         "description": "Text shown in the title of the powerful teleport instruction of the Game Instructions Overlay"
     },
-    "gameInstructionsPagePowerfulWingsDescription": "Collect the golden feather to power up Dash with Flutter. While in midair, tap to do a double jump and see Dash fly!",
+    "gameInstructionsPagePowerfulWingsDescription": "Use the teleport to move faster !",
     "@gameInstructionsPagePowerfulWingsDescription": {
-        "description": "Text shown in the description of the powerful wings instruction of the Game Instructions Overlay"
+        "description": "Text shown in the description of the powerful teleport instruction of the Game Instructions Overlay"
     },
     "gameInstructionsPageLevelGatesTitle": "Level Gates",
     "@gameInstructionsPageLevelGatesTitle": {

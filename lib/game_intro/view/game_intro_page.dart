@@ -24,7 +24,7 @@ class _GameIntroPageState extends State<GameIntroPage> {
 
   void _onDownload() {
     final isAndroid = defaultTargetPlatform == TargetPlatform.android;
-    launchUrl(Uri.parse(isAndroid ? Urls.playStoreLink : Urls.appStoreLink));
+    //launchUrl(Uri.parse(isAndroid ? Urls.playStoreLink : Urls.appStoreLink));
   }
 
   @override

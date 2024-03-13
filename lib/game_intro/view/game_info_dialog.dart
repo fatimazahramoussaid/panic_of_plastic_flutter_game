@@ -77,30 +77,6 @@ class GameInfoDialog extends StatelessWidget {
                   style: bodyStyle,
                 ),
                 const SizedBox(height: 16),
-                RichText(
-                  text: TextSpan(
-                    text: l10n.flutterGames,
-                    style: linkStyle,
-                    recognizer: TapGestureRecognizer()
-                      ..onTap = () => launchUrlString(Urls.flutterGames),
-                  ),
-                ),
-                RichText(
-                  text: TextSpan(
-                    text: l10n.privacyPolicy,
-                    style: linkStyle,
-                    recognizer: TapGestureRecognizer()
-                      ..onTap = () => launchUrlString(Urls.privacyPolicy),
-                  ),
-                ),
-                RichText(
-                  text: TextSpan(
-                    text: l10n.termsOfService,
-                    style: linkStyle,
-                    recognizer: TapGestureRecognizer()
-                      ..onTap = () => launchUrlString(Urls.termsOfService),
-                  ),
-                ),
               ],
             ),
           ),

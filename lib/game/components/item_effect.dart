@@ -1,6 +1,4 @@
 import 'dart:async';
-import 'dart:html';
-
 import 'package:flame/components.dart';
 import 'package:panic_of_plastic/game/game.dart';
 
