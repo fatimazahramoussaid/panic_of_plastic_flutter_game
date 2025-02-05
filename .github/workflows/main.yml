@@ -1,0 +1,56 @@
+name: CICD dev
+
+run-name: "CICD dev triggered by @${{ github.actor }}"
+
+on:
+  push:
+    branches:
+      - feature/assumption_table
+    tags:
+      # 'x.y.z-beta.n'
+      - "[0-9]+.[0-9]+.[0-9]+-beta.[0-9]+"
+    
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Environment to deploy into."
+        required: true
+        type: choice
+        options:
+          - dev
+        default: "dev"
+      registry:
+        description: "Registry to deploy into."
+        required: false
+        type: choice
+        options:
+          - sd-aihub-common-pypi-prod-fed
+        default: "sd-aihub-common-pypi-prod-fed"
+
+jobs:
+  varenv:
+    runs-on: ['self-hosted']
+    outputs:
+      gen_user: ${{ steps.compute_varenv.outputs.gen_user }}
+      gen_pwd: ${{ steps.compute_varenv.outputs.gen_pwd }}
+    steps:
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.9
+      - name: Compute var env
+        id: compute_varenv
+        run: | 
+          echo "cccccccccccccccc"
+          echo ${{secrets.GEN_USER}}
+          echo gen_user="${{secrets.GEN_USER}}" >> GITHUB_OUTPUT
+          echo gen_pwd="${{secrets.GEN_USER}}" >> GITHUB_OUTPUT
+        shell: bash
+      - name: Set env as secret
+        env:
+          MY_VAL: "bbbb"
+        run: |
+          import os
+          for q in (os.getenv("MY_VAL")):
+            print(q)
+        shell: python
